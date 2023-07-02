@@ -192,8 +192,9 @@
 				</p>
 			</Tabs.Tab>
 			<Tabs.Tab label="Graph" icon={BarChart} on:click={() => (modalOpened = !modalOpened)}>
-				<!-- <canvas bind:this={graph} class="h-[200px] w-[200px]" /> -->
-				<Graph {config} />
+				{#key config}
+					<Graph {config} />
+				{/key}
 			</Tabs.Tab>
 			<Tabs.Tab label="Iterations" icon={Table}>
 				<h3>Result Table</h3>
