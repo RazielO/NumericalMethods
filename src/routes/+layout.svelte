@@ -12,7 +12,8 @@
 		Header,
 		Aside,
 		Footer,
-		ShellSection
+		ShellSection,
+		TypographyProvider
 	} from '@svelteuidev/core';
 	import FaRegMoon from 'svelte-icons/fa/FaRegMoon.svelte';
 	import FaMoon from 'svelte-icons/fa/FaMoon.svelte';
@@ -61,9 +62,10 @@
 			</div>
 		</Header>
 
-		<!-- Main content uses the default slot, so no need to explicitly declare it -->
-		<div class="p-[4rem]">
-			<slot />
+		<div class="px-[1rem] py-[2rem] md:py-[4rem] md:px-[2rem]">
+			<TypographyProvider>
+				<slot />
+			</TypographyProvider>
 		</div>
 
 		<!-- <Aside slot="aside">

@@ -4,7 +4,7 @@
 
 <Menu>
 	<Button slot="control" variant="subtle" ripple>Menu</Button>
-	<Menu.Item>Settings</Menu.Item>
-	<Menu.Item>Messages</Menu.Item>
+	<Menu.Item disabled><b>Root Finding</b></Menu.Item>
+	<Menu.Item><a href="/rootFinding/bisection">Bisection</a></Menu.Item>
 	<Menu.Item>Gallery</Menu.Item>
 </Menu>
