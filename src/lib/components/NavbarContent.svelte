@@ -9,4 +9,5 @@
 	<Menu.Item><a href="/rootFinding/regulaFalsi">Regula Falsi</a></Menu.Item>
 	<Menu.Item><a href="/rootFinding/fixedPoint">Fixed Point</a></Menu.Item>
 	<Menu.Item><a href="/rootFinding/newtonRaphson">Newton-Raphson</a></Menu.Item>
+	<Menu.Item><a href="/rootFinding/secant">Secant</a></Menu.Item>
 </Menu>
