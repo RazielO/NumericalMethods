@@ -108,13 +108,13 @@
 	<h2>Calculator</h2>
 
 	<Grid cols={2}>
-		<Grid.Col xs={3} sm={3}>
+		<Grid.Col xs={2} sm={2}>
 			<TextInput placeholder="E.g. x^3" label="Function" bind:value={func} />
 		</Grid.Col>
-		<Grid.Col xs={3} sm={1}>
+		<Grid.Col xs={2} sm={1}>
 			<NumberInput placeholder="E.g. -2" label="First fixed point (x0)" bind:value={x0} />
 		</Grid.Col>
-		<Grid.Col xs={3} sm={1}>
+		<Grid.Col xs={2} sm={1}>
 			<NumberInput
 				placeholder="E.g. 0.01"
 				label="Allowed error (ep)"
@@ -123,7 +123,7 @@
 				bind:value={error}
 			/>
 		</Grid.Col>
-		<Grid.Col xs={3} sm={3}><Button on:click={findRoot}>Find root</Button></Grid.Col>
+		<Grid.Col xs={2} sm={3}><Button on:click={findRoot}>Find root</Button></Grid.Col>
 	</Grid>
 </div>
 
