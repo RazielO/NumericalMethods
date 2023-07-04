@@ -16,11 +16,15 @@
 	// Algorithm imports
 	import { Secant } from '$lib/algorithms/rootFinding/secant/algorithm';
 	import type { SecantStep } from '$lib/algorithms/rootFinding/secant/type';
+	import { math } from 'mathlifier';
+	import ResultTable from '$lib/components/ResultTable.svelte';
 
 	// Page configuration variables
 	let title = 'Secant Method';
 	let show: boolean = false;
 	let config: ChartConfiguration;
+	const headers: string[] = ['n', 'x_0', 'x_1', 'x_2', 'error'];
+	let values: string[][];
 
 	// Algorithm related variables
 	let bisection: Secant;
@@ -35,6 +39,15 @@
 		bisection = new Secant(a, b, error, func);
 		steps = bisection.steps();
 		lastStep = steps[steps.length - 1];
+
+		values = steps.map((step) => [
+			step.iteration.toString(),
+			step.x0.toFixed(6),
+			step.x1.toFixed(6),
+			step.x2.toFixed(6),
+			step.error.toFixed(6)
+		]);
+
 		show = true;
 		let end = (x: number) => (x > 0 ? x * 1.2 : x + x * 0.2);
 		let start = (x: number) => (x > 0 ? x - x * 0.2 : x * 1.2);
@@ -133,10 +146,20 @@
 			<TextInput placeholder="E.g. x^3" label="Function" bind:value={func} />
 		</Grid.Col>
 		<Grid.Col xs={3} sm={1}>
-			<NumberInput placeholder="E.g. -2" label="Initial approximation (xi)" bind:value={a} />
+			<NumberInput
+				placeholder="E.g. -2"
+				label="Initial approximation (xi)"
+				bind:value={a}
+				precision={4}
+			/>
 		</Grid.Col>
 		<Grid.Col xs={3} sm={1}>
-			<NumberInput placeholder="E.g. 3" label="Initial approximation (xj)" bind:value={b} />
+			<NumberInput
+				placeholder="E.g. 3"
+				label="Initial approximation (xj)"
+				bind:value={b}
+				precision={4}
+			/>
 		</Grid.Col>
 		<Grid.Col xs={3} sm={1}>
 			<NumberInput
@@ -157,9 +180,9 @@
 			<Tabs.Tab label="Result" icon={LightningBolt}>
 				<p class="text-center text-lg py-[1rem]">
 					{#if lastStep.error <= error || lastStep.fx1 === 0}
-						Root found on <b>{lastStep.x2}</b>
+						Root found on {@html math(lastStep.x2.toString())}
 					{:else}
-						Root not found for {func}
+						Root not found for {@html math(func)}
 					{/if}
 				</p>
 			</Tabs.Tab>
@@ -170,26 +193,8 @@
 			</Tabs.Tab>
 			<Tabs.Tab label="Iterations" icon={Table}>
 				<h3>Result Table</h3>
-				<table>
-					<thead>
-						<th>n</th>
-						<th>x0</th>
-						<th>x1</th>
-						<th>x2</th>
-						<th>error</th>
-					</thead>
-					<tbody>
-						{#each steps as step}
-							<tr>
-								<td>{step.iteration}</td>
-								<td>{step.x0}</td>
-								<td>{step.x1}</td>
-								<td>{step.x2}</td>
-								<td>{step.error}</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
+
+				<ResultTable {headers} {values} />
 			</Tabs.Tab>
 		</Tabs>
 	{/if}

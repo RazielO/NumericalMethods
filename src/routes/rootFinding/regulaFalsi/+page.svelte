@@ -20,17 +20,21 @@
 	// Function imports
 	import { evaluate } from 'mathjs';
 	import { range } from '$lib/functions';
+	import { math } from 'mathlifier';
 
 	// Algorithm imports
 	import { RegulaFalsi } from '$lib/algorithms/rootFinding/regulaFalsi/algorithm';
 	import type { RegulaFalsiStep } from '$lib/algorithms/rootFinding/regulaFalsi/type';
 	import Info from '$lib/algorithms/rootFinding/regulaFalsi/Description.md';
+	import ResultTable from '$lib/components/ResultTable.svelte';
 
 	// Page configuration variables
 	let title = 'Regula Falsi Method';
 	let show: boolean = false;
 	let modalOpened: boolean = false;
 	let config: ChartConfiguration;
+	const headers: string[] = ['n', 'a', 'b', 'x_R', 'error'];
+	let values: string[][];
 
 	// Algorithm related variables
 	let regulaFalsi: RegulaFalsi;
@@ -43,6 +47,9 @@
 	function findRoot() {
 		regulaFalsi = new RegulaFalsi(a, b, error, func);
 		steps = regulaFalsi.steps();
+
+		values = steps.map((step) => [step.iteration.toString(), step.a, step.b, step.xr, step.error]);
+
 		show = true;
 		let end = (x: number) => (x > 0 ? x * 1.2 : x + x * 0.2);
 		let start = (x: number) => (x > 0 ? x - x * 0.2 : x * 1.2);
@@ -156,24 +163,24 @@
 	<h2>Calculator</h2>
 
 	<Grid cols={3}>
-		<Grid.Col xs={3} sm={3}
-			><TextInput placeholder="E.g. x^3" label="Function" bind:value={func} /></Grid.Col
-		>
-		<Grid.Col xs={3} sm={1}
-			><NumberInput placeholder="E.g. -2" label="Start point (a)" bind:value={a} /></Grid.Col
-		>
-		<Grid.Col xs={3} sm={1}
-			><NumberInput placeholder="E.g. 2" label="End point (b)" bind:value={b} /></Grid.Col
-		>
-		<Grid.Col xs={3} sm={1}
-			><NumberInput
+		<Grid.Col xs={3} sm={3}>
+			<TextInput placeholder="E.g. x^3" label="Function" bind:value={func} />
+		</Grid.Col>
+		<Grid.Col xs={3} sm={1}>
+			<NumberInput placeholder="E.g. -2" label="Start point (a)" bind:value={a} precision={4} />
+		</Grid.Col>
+		<Grid.Col xs={3} sm={1}>
+			<NumberInput placeholder="E.g. 2" label="End point (b)" bind:value={b} precision={4} />
+		</Grid.Col>
+		<Grid.Col xs={3} sm={1}>
+			<NumberInput
 				placeholder="E.g. 0.01"
 				label="Allowed error (ep)"
 				step={0.01}
 				precision={4}
 				bind:value={error}
-			/></Grid.Col
-		>
+			/>
+		</Grid.Col>
 		<Grid.Col xs={3} sm={3}><Button on:click={findRoot}>Find root</Button></Grid.Col>
 	</Grid>
 </div>
@@ -184,9 +191,9 @@
 			<Tabs.Tab label="Result" icon={LightningBolt}>
 				<p class="text-center text-lg py-[1rem]">
 					{#if Number.parseFloat(steps[steps.length - 1].error) <= error || Number.parseFloat(steps[steps.length - 1].fxr) === 0}
-						Root found on <b>{steps[steps.length - 1].xr}</b>
+						Root found on {@html math(steps[steps.length - 1].xr)}
 					{:else}
-						Root not found for {func} on the interval [{a}, {b}]
+						Root not found for {@html math(func)} on the interval {@html math(`[${a}, ${b}]`)}
 					{/if}
 				</p>
 			</Tabs.Tab>
@@ -197,26 +204,8 @@
 			</Tabs.Tab>
 			<Tabs.Tab label="Iterations" icon={Table}>
 				<h3>Result Table</h3>
-				<table>
-					<thead>
-						<th>n</th>
-						<th>a</th>
-						<th>b</th>
-						<th>xR</th>
-						<th>error</th>
-					</thead>
-					<tbody>
-						{#each steps as step}
-							<tr>
-								<td>{step.iteration}</td>
-								<td>{step.a}</td>
-								<td>{step.b}</td>
-								<td>{step.xr}</td>
-								<td>{step.error}</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
+
+				<ResultTable {headers} {values} />
 			</Tabs.Tab>
 		</Tabs>
 	{/if}

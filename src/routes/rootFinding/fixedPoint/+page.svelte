@@ -1,15 +1,6 @@
 <script lang="ts">
 	// UI Imports
-	import {
-		TextInput,
-		NumberInput,
-		Button,
-		Grid,
-		Modal,
-		Group,
-		TypographyProvider,
-		Tabs
-	} from '@svelteuidev/core';
+	import { TextInput, NumberInput, Button, Grid, Tabs } from '@svelteuidev/core';
 	import { InfoCircled, Table, BarChart, LightningBolt } from 'radix-icons-svelte';
 	import Graph from '$lib/components/Graph.svelte';
 
@@ -20,17 +11,21 @@
 	// Function imports
 	import { evaluate } from 'mathjs';
 	import { range } from '$lib/functions';
+	import { math } from 'mathlifier';
 
 	// Algorithm imports
 	import { FixedPoint } from '$lib/algorithms/rootFinding/fixedPoint/algorithm';
 	import type { FixedPointStep } from '$lib/algorithms/rootFinding/fixedPoint/type';
 	import Info from '$lib/algorithms/rootFinding/fixedPoint/Description.md';
+	import ResultTable from '$lib/components/ResultTable.svelte';
 
 	// Page configuration variables
 	let title = 'Fixed Point Method';
 	let show: boolean = false;
 	let config: ChartConfiguration;
 	const precision: number = 6;
+	const headers = ['n', 'x_0', 'x_1', 'error'];
+	let values: string[][];
 
 	// Algorithm related variables
 	let fixedPoint: FixedPoint;
@@ -43,6 +38,14 @@
 	function findRoot() {
 		fixedPoint = new FixedPoint(x0, func, error);
 		steps = fixedPoint.steps();
+
+		values = steps.map((step) => [
+			step.iteration.toString(),
+			step.x0.toFixed(precision),
+			step.x1.toFixed(precision),
+			step.error.toFixed(precision)
+		]);
+
 		lastStep = steps[steps.length - 1];
 		show = true;
 		let xValues = range(lastStep.x1 - 5, lastStep.x1 + 5, 0.1);
@@ -112,7 +115,12 @@
 			<TextInput placeholder="E.g. x^3" label="Function" bind:value={func} />
 		</Grid.Col>
 		<Grid.Col xs={2} sm={1}>
-			<NumberInput placeholder="E.g. -2" label="First fixed point (x0)" bind:value={x0} />
+			<NumberInput
+				placeholder="E.g. -2"
+				label="First fixed point (x0)"
+				bind:value={x0}
+				precision={4}
+			/>
 		</Grid.Col>
 		<Grid.Col xs={2} sm={1}>
 			<NumberInput
@@ -133,9 +141,9 @@
 			<Tabs.Tab label="Result" icon={LightningBolt}>
 				<p class="text-center text-lg py-[1rem]">
 					{#if lastStep.error <= error || lastStep.gx1 === 0}
-						Root found on <b>{lastStep.x1.toFixed(precision)}</b>
+						Root found on {@html math(lastStep.x1.toFixed(precision))}
 					{:else}
-						Root not found for {func}
+						Root not found for {@html math(func)}
 					{/if}
 				</p>
 			</Tabs.Tab>
@@ -146,24 +154,8 @@
 			</Tabs.Tab>
 			<Tabs.Tab label="Iterations" icon={Table}>
 				<h3>Result Table</h3>
-				<table>
-					<thead>
-						<th>n</th>
-						<th>x0</th>
-						<th>x1</th>
-						<th>error</th>
-					</thead>
-					<tbody>
-						{#each steps as step}
-							<tr>
-								<td>{step.iteration}</td>
-								<td>{step.x0.toFixed(precision)}</td>
-								<td>{step.x1.toFixed(precision)}</td>
-								<td>{step.error.toFixed(precision)}</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
+
+				<ResultTable {headers} {values} />
 			</Tabs.Tab>
 		</Tabs>
 	{/if}
