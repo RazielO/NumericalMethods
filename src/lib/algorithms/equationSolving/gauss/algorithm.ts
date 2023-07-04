@@ -11,10 +11,10 @@ export class Gauss {
     }
 
     /**
-     * Metodo que realiza el algoritmo para resolver un sistema de ecuacions por Gauss:
-     *      1. Dividir la n-esima fila entre el valor de la celda n, n
-     *      2. Hacer ceros la n-esima columna debajo de la celda n, n
-     * @return ArrayList Regresa una lista con las matrices que se van generando en el algoritmo.
+     * Gauss method:
+     *   1. Divide the nth row by the value on (n, n)
+     *   2. Make the nth column all zeroes below the cell (n, n)
+     * @returns Array of steps (matrices)
      */
     steps(): Array<number[][]> {
         let valor: number;
