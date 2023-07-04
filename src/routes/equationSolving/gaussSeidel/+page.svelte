@@ -1,6 +1,6 @@
 <script lang="ts">
 	// UI Imports
-	import { Stack, NumberInput, Button, Grid, Tabs } from '@svelteuidev/core';
+	import { Stack, NumberInput, Button, Grid, Tabs, Group } from '@svelteuidev/core';
 	import { Table, LightningBolt } from 'radix-icons-svelte';
 	import Info from '$lib/algorithms/equationSolving/gaussSeidel/Description.md';
 
@@ -24,6 +24,7 @@
 	let matrix: number[][];
 	let approximations: number[];
 	let size: number = 3;
+	let tolerance: number = 0.01;
 
 	function updateMatrix() {
 		matrix = Array(size)
@@ -33,7 +34,7 @@
 	}
 
 	function solve() {
-		gauss = new GaussSeidel(matrix, 0.001, approximations);
+		gauss = new GaussSeidel(matrix, tolerance, approximations);
 		steps = gauss.steps();
 		results = steps[steps.length - 1].newValues;
 
@@ -63,15 +64,24 @@
 	<h2>Calculator</h2>
 
 	<Stack align="center">
-		<NumberInput
-			placeholder="Number of equations"
-			label="Number of equations"
-			bind:value={size}
-			on:change={updateMatrix}
-			min={3}
-			max={10}
-			step={1}
-		/>
+		<Group position="center" grow>
+			<NumberInput
+				placeholder="Number of equations"
+				label="Number of equations"
+				bind:value={size}
+				on:change={updateMatrix}
+				min={3}
+				max={10}
+				step={1}
+			/>
+			<NumberInput
+				placeholder="Tolerance"
+				label="Tolerance"
+				bind:value={tolerance}
+				step={0.01}
+				precision={4}
+			/>
+		</Group>
 		<Grid cols={size + 1}>
 			{#each matrix as row, i}
 				{#each row as _, j}
