@@ -14,4 +14,5 @@
 	<Menu.Item disabled><b>Equation Solving</b></Menu.Item>
 	<Menu.Item on:click={() => goto('/equationSolving/gauss')}>Gauss</Menu.Item>
 	<Menu.Item on:click={() => goto('/equationSolving/gaussJordan')}>Gauss-Jordan</Menu.Item>
+	<Menu.Item on:click={() => goto('/equationSolving/gaussSeidel')}>Gauss-Seidel</Menu.Item>
 </Menu>
