@@ -10,4 +10,6 @@
 	<Menu.Item><a href="/rootFinding/fixedPoint">Fixed Point</a></Menu.Item>
 	<Menu.Item><a href="/rootFinding/newtonRaphson">Newton-Raphson</a></Menu.Item>
 	<Menu.Item><a href="/rootFinding/secant">Secant</a></Menu.Item>
+	<Menu.Item disabled><b>Equation Solving</b></Menu.Item>
+	<Menu.Item><a href="/equationSolving/gauss">Gauss</a></Menu.Item>
 </Menu>
