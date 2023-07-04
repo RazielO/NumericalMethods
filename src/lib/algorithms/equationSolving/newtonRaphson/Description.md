@@ -1,14 +1,3 @@
-The Jacobi method is an iterative method to solve systems of linear equations. The iterative methods have the advantage over elimination method of less round-off errors. It differs from the Gauss-Seidel method because it uses zeroes for the initial approximations.
-
-$$
-\begin{matrix}
-a_{11}x_1 & + & a_{12}x_2  & + & \cdots & + & a_{1n}x_n & = & b_1 \\
-a_{21}x_1 & + & a_{22}x_2  & + & \cdots & + & a_{2n}x_n & = & b_2 \\
-\vdots &  & \vdots  &  &  &  & \vdots & = & \vdots \\
-a_{n1}x_1 & + & a_{n2}x_2  & + & \cdots & + & a_{nn}x_n & = & b_n
-\end{matrix}
-$$
-
 ### Algorithm
 
 1. Define the initial approximations.
