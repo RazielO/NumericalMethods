@@ -13,4 +13,5 @@
 	<Menu.Item on:click={() => goto('/rootFinding/secant')}>Secant</Menu.Item>
 	<Menu.Item disabled><b>Equation Solving</b></Menu.Item>
 	<Menu.Item on:click={() => goto('/equationSolving/gauss')}>Gauss</Menu.Item>
+	<Menu.Item on:click={() => goto('/equationSolving/gaussJordan')}>Gauss-Jordan</Menu.Item>
 </Menu>
