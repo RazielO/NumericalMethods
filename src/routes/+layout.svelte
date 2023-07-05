@@ -24,7 +24,7 @@
 
 	import '../app.css';
 
-	let dark = false;
+	let dark = true;
 
 	function toggleTheme() {
 		colorScheme.update((v) => {
