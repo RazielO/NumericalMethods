@@ -18,4 +18,6 @@
 	<Menu.Item on:click={() => goto('/equationSolving/jacobi')}>Jacobi</Menu.Item>
 	<Menu.Item disabled><b>Multi variable Equation Solving</b></Menu.Item>
 	<Menu.Item on:click={() => goto('/equationSolving/newtonRaphson')}>Newton-Raphson</Menu.Item>
+	<Menu.Item disabled><b>Regression</b></Menu.Item>
+	<Menu.Item on:click={() => goto('/regression/leastSquares')}>Least Squares</Menu.Item>
 </Menu>
