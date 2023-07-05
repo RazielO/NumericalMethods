@@ -20,4 +20,5 @@
 	<Menu.Item on:click={() => goto('/equationSolving/newtonRaphson')}>Newton-Raphson</Menu.Item>
 	<Menu.Item disabled><b>Regression</b></Menu.Item>
 	<Menu.Item on:click={() => goto('/regression/leastSquares')}>Least Squares</Menu.Item>
+	<Menu.Item on:click={() => goto('/regression/polynomial')}>Polynomial</Menu.Item>
 </Menu>
