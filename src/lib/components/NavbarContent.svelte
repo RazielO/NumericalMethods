@@ -36,6 +36,11 @@
 				{ href: 'polynomial', title: 'Polynomial' },
 				{ href: 'multipleLinear', title: 'Multiple Linear' }
 			]
+		},
+		{
+			title: 'Interpolation',
+			folder: '/interpolation',
+			links: [{ href: 'linear', title: 'Linear' }]
 		}
 	];
 </script>
