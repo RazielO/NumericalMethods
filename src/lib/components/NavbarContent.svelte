@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { Button, Menu } from '@svelteuidev/core';
 
 	const menuItems = [
@@ -51,11 +50,3 @@
 		</Menu.Item>
 	{/each}
 </Menu>
-
-<style>
-	.icon {
-		margin: 0;
-		padding: 0;
-		height: 1.5rem;
-	}
-</style>
