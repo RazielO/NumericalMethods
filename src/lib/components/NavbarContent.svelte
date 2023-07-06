@@ -33,7 +33,8 @@
 			folder: '/regression',
 			links: [
 				{ href: 'leastSquares', title: 'Least Squares' },
-				{ href: 'polynomial', title: 'Polynomial' }
+				{ href: 'polynomial', title: 'Polynomial' },
+				{ href: 'multipleLinear', title: 'Multiple Linear' }
 			]
 		}
 	];
