@@ -4,32 +4,36 @@
 	const menuItems = [
 		{
 			title: 'Root Finding',
+			folder: '/rootFinding',
 			links: [
-				{ href: '/rootFinding/bisection', title: 'Bisection' },
-				{ href: '/rootFinding/regulaFalsi', title: 'Regula Falsi' },
-				{ href: '/rootFinding/fixedPoint', title: 'Fixed Point' },
-				{ href: '/rootFinding/newtonRaphson', title: 'Newton-Raphson' },
-				{ href: '/rootFinding/secant', title: 'Secant' }
+				{ href: 'bisection', title: 'Bisection' },
+				{ href: 'regulaFalsi', title: 'Regula Falsi' },
+				{ href: 'fixedPoint', title: 'Fixed Point' },
+				{ href: 'newtonRaphson', title: 'Newton-Raphson' },
+				{ href: 'secant', title: 'Secant' }
 			]
 		},
 		{
 			title: 'Equation Solving',
+			folder: '/equationSolving',
 			links: [
-				{ href: '/equationSolving/gauss', title: 'Gauss' },
-				{ href: '/equationSolving/gaussJordan', title: 'Gauss-Jordan' },
-				{ href: '/equationSolving/gaussSeidel', title: 'Gauss-Seidel' },
-				{ href: '/equationSolving/jacobi', title: 'Jacobi' }
+				{ href: 'gauss', title: 'Gauss' },
+				{ href: 'gaussJordan', title: 'Gauss-Jordan' },
+				{ href: 'gaussSeidel', title: 'Gauss-Seidel' },
+				{ href: 'jacobi', title: 'Jacobi' }
 			]
 		},
 		{
 			title: 'Multi variable Equation Solving',
-			links: [{ href: '/equationSolving/newtonRaphson', title: 'Newton-Raphson' }]
+			folder: '/equationSolving',
+			links: [{ href: 'newtonRaphson', title: 'Newton-Raphson' }]
 		},
 		{
 			title: 'Regression',
+			folder: '/regression',
 			links: [
-				{ href: '/regression/leastSquares', title: 'Least Squares' },
-				{ href: '/regression/polynomial', title: 'Polynomial' }
+				{ href: 'leastSquares', title: 'Least Squares' },
+				{ href: 'polynomial', title: 'Polynomial' }
 			]
 		}
 	];
@@ -44,7 +48,7 @@
 					<b>{item.title}</b>
 				</Button>
 				{#each item.links as link}
-					<Menu.Item root="a" href={link.href}>{link.title}</Menu.Item>
+					<Menu.Item root="a" href="{item.folder}/{link.href}">{link.title}</Menu.Item>
 				{/each}
 			</Menu>
 		</Menu.Item>
