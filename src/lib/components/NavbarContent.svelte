@@ -1,24 +1,61 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
-	import { Button, Divider, Menu } from '@svelteuidev/core';
+	import { Button, Menu } from '@svelteuidev/core';
+
+	const menuItems = [
+		{
+			title: 'Root Finding',
+			links: [
+				{ href: '/rootFinding/bisection', title: 'Bisection' },
+				{ href: '/rootFinding/regulaFalsi', title: 'Regula Falsi' },
+				{ href: '/rootFinding/fixedPoint', title: 'Fixed Point' },
+				{ href: '/rootFinding/newtonRaphson', title: 'Newton-Raphson' },
+				{ href: '/rootFinding/secant', title: 'Secant' }
+			]
+		},
+		{
+			title: 'Equation Solving',
+			links: [
+				{ href: '/equationSolving/gauss', title: 'Gauss' },
+				{ href: '/equationSolving/gaussJordan', title: 'Gauss-Jordan' },
+				{ href: '/equationSolving/gaussSeidel', title: 'Gauss-Seidel' },
+				{ href: '/equationSolving/jacobi', title: 'Jacobi' }
+			]
+		},
+		{
+			title: 'Multi variable Equation Solving',
+			links: [{ href: '/equationSolving/newtonRaphson', title: 'Newton-Raphson' }]
+		},
+		{
+			title: 'Regression',
+			links: [
+				{ href: '/regression/leastSquares', title: 'Least Squares' },
+				{ href: '/regression/polynomial', title: 'Polynomial' }
+			]
+		}
+	];
 </script>
 
-<Menu>
+<Menu style="overflow-">
 	<Button slot="control" variant="subtle" ripple>Menu</Button>
-	<Menu.Item disabled><b>Root Finding</b></Menu.Item>
-	<Menu.Item on:click={() => goto('/rootFinding/bisection')}>Bisection</Menu.Item>
-	<Menu.Item on:click={() => goto('/rootFinding/regulaFalsi')}>Regula Falsi</Menu.Item>
-	<Menu.Item on:click={() => goto('/rootFinding/fixedPoint')}>Fixed Point</Menu.Item>
-	<Menu.Item on:click={() => goto('/rootFinding/newtonRaphson')}>Newton-Raphson</Menu.Item>
-	<Menu.Item on:click={() => goto('/rootFinding/secant')}>Secant</Menu.Item>
-	<Menu.Item disabled><b>Equation Solving</b></Menu.Item>
-	<Menu.Item on:click={() => goto('/equationSolving/gauss')}>Gauss</Menu.Item>
-	<Menu.Item on:click={() => goto('/equationSolving/gaussJordan')}>Gauss-Jordan</Menu.Item>
-	<Menu.Item on:click={() => goto('/equationSolving/gaussSeidel')}>Gauss-Seidel</Menu.Item>
-	<Menu.Item on:click={() => goto('/equationSolving/jacobi')}>Jacobi</Menu.Item>
-	<Menu.Item disabled><b>Multi variable Equation Solving</b></Menu.Item>
-	<Menu.Item on:click={() => goto('/equationSolving/newtonRaphson')}>Newton-Raphson</Menu.Item>
-	<Menu.Item disabled><b>Regression</b></Menu.Item>
-	<Menu.Item on:click={() => goto('/regression/leastSquares')}>Least Squares</Menu.Item>
-	<Menu.Item on:click={() => goto('/regression/polynomial')}>Polynomial</Menu.Item>
+	{#each menuItems as item}
+		<Menu.Item>
+			<Menu>
+				<Button slot="control" variant="subtle" color="dark" class="text-left">
+					<b>{item.title}</b>
+				</Button>
+				{#each item.links as link}
+					<Menu.Item root="a" href={link.href}>{link.title}</Menu.Item>
+				{/each}
+			</Menu>
+		</Menu.Item>
+	{/each}
 </Menu>
+
+<style>
+	.icon {
+		margin: 0;
+		padding: 0;
+		height: 1.5rem;
+	}
+</style>
