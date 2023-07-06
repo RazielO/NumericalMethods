@@ -9,11 +9,9 @@ export class Polynomial {
     private equation: string;
 
     /**
-     * Constructor de la clase
-     *
-     * @param x Valores de x
-     * @param y Valores de y
-     * @param orden Orden del polinomio
+     * @param x Values of x
+     * @param y Values of y
+     * @param degree Degree of the polynomial
      */
     constructor(x: number[], y: number[], degree: number) {
         this.x = x;
@@ -24,32 +22,28 @@ export class Polynomial {
     }
 
     /**
-     * Sumatoria de X^m * Y
+     * @param x Values of x
+     * @param y Values of y
+     * @param m Exponent m
      *
-     * @param x Valores de x
-     * @param y Valores de y
-     * @param m Valor de m
-     *
-     * @return Double Sumatoria de X^m * Y
+     * @returns number Sum of X^m * Y
      */
     private sumXmY(x: number[], y: number[], m: number): number {
         return sum(x.map((xi, i) => (Math.pow(xi, m) * y[i])));
     }
 
     /**
-     * Sumatoria de x^m
+     * @param x values of x
+     * @param m exponent m
      *
-     * @param x Valores de x
-     * @param m Valor de m
-     *
-     * @return Double Sumatoria de x^m
+     * @returns number Sum of x^m
      */
     private sumXm(x: number[], m: number): number {
         return sum(x.map(xi => xi ** m));
     }
 
     /**
-     * Llena la matriz con sumatorias
+     * @returns number[][] matrix filled with sums
      */
     private createMatrix(): number[][] {
         let matrix = new Array(this.degree + 1)
@@ -70,9 +64,7 @@ export class Polynomial {
     }
 
     /**
-     * Calcula st
-     *
-     * @return double Regresa st
+     * @returns number St value for r-value calculation
      */
     private calcSt(): number {
         let meanY = mean(this.y);
@@ -80,20 +72,16 @@ export class Polynomial {
     }
 
     /**
-     * Calcula sr
-     *
-     * @return double Regresa sr
+     * @returns number Sr value for r-value calculation
      */
     private calcSr(): number {
         return sum(this.x.map((xi, i) => this.evalSr(xi, this.y[i]) ** 2));
     }
 
     /**
-     * Hace las iteraciones de sr;
-     *
      * @param x1 Valor de xi
      * @param y1 Valor de yi
-     * @return double Regresa una evaluacion de sr
+     * @returns double Evaluation of an Sr iteration
      */
     private evalSr(x1: number, y1: number): number {
         let value = y1;
@@ -105,9 +93,7 @@ export class Polynomial {
     }
 
     /**
-     * Calcula la ecuacion
-     *
-     * @return String Regresa la ecuacion
+     * @returns string Function found on the regression
      */
     getFunction(): string {
         let matrix: number[][] = this.createMatrix();
@@ -123,9 +109,7 @@ export class Polynomial {
     }
 
     /**
-     * Calcula que tan buena fue la aproximacion
-     *
-     * @return String Regresa el valor de r
+     * @returns number How good is the approximation
      */
     rValue(): number {
         let st = this.calcSt();
