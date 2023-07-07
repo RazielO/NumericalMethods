@@ -42,7 +42,8 @@
 			folder: '/interpolation',
 			links: [
 				{ href: 'linear', title: 'Linear' },
-				{ href: 'polynomial', title: 'Polynomial' }
+				{ href: 'polynomial', title: 'Polynomial' },
+				{ href: 'lagrange', title: 'Lagrange' }
 			]
 		}
 	];
