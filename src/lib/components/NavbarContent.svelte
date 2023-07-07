@@ -40,7 +40,10 @@
 		{
 			title: 'Interpolation',
 			folder: '/interpolation',
-			links: [{ href: 'linear', title: 'Linear' }]
+			links: [
+				{ href: 'linear', title: 'Linear' },
+				{ href: 'polynomial', title: 'Polynomial' }
+			]
 		}
 	];
 </script>
