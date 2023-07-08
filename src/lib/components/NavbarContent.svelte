@@ -61,7 +61,14 @@
 				{ href: 'simpson13', title: 'Simpson 1/3' },
 				{ href: 'simpson38', title: 'Simpson 3/8' },
 			]
-		}
+		},
+		{
+			title: 'Differential Equations',
+			folder: '/differentialEquations',
+			links: [
+				{ href: 'euler', title: 'Euler method' },
+			]
+		},
 	];
 </script>
 
