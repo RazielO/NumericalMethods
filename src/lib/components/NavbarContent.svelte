@@ -45,6 +45,13 @@
 				{ href: 'polynomial', title: 'Polynomial' },
 				{ href: 'lagrange', title: 'Lagrange' }
 			]
+		},
+		{
+			title: 'Differentiation',
+			folder: '/differentiation',
+			links: [
+				{ href: 'differentiation', title: 'Numerical Differentiation' },
+			]
 		}
 	];
 </script>
