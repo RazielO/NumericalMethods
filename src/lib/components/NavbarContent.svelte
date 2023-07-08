@@ -52,6 +52,13 @@
 			links: [
 				{ href: 'differentiation', title: 'Numerical Differentiation' },
 			]
+		},
+		{
+			title: 'Integration',
+			folder: '/integration',
+			links: [
+				{ href: 'trapezoidal', title: 'Trapezoidal rule' },
+			]
 		}
 	];
 </script>
