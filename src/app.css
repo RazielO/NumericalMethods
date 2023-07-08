@@ -14,3 +14,7 @@ ul p {
 ul {
 	list-style: disc;
 }
+
+.math-display {
+	overflow-x: auto;
+}
