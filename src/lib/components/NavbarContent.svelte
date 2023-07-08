@@ -59,6 +59,7 @@
 			links: [
 				{ href: 'trapezoidal', title: 'Trapezoidal rule' },
 				{ href: 'simpson13', title: 'Simpson 1/3' },
+				{ href: 'simpson38', title: 'Simpson 3/8' },
 			]
 		}
 	];
