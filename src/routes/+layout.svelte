@@ -2,17 +2,10 @@
 	import {
 		colorScheme,
 		SvelteUIProvider,
-		Stack,
 		Switch,
-		Text,
-		Grid,
-		fns,
 		AppShell,
-		Navbar,
 		Header,
-		Aside,
 		Footer,
-		ShellSection,
 		TypographyProvider
 	} from '@svelteuidev/core';
 	import FaRegMoon from 'svelte-icons/fa/FaRegMoon.svelte';
@@ -67,10 +60,6 @@
 				<slot />
 			</TypographyProvider>
 		</div>
-
-		<!-- <Aside slot="aside">
-			<AsideContent />
-		</Aside> -->
 
 		<Footer slot="footer" height="5rem">
 			<p class="mx-auto block w-fit leading-[5rem]">GitHub.com/RazielO/NumericalMethods</p>
