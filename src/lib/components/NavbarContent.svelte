@@ -67,6 +67,7 @@
 			folder: '/differentialEquations',
 			links: [
 				{ href: 'euler', title: 'Euler method' },
+				{ href: 'rungeKutta', title: 'Runge-Kutta method' },
 			]
 		},
 	];
