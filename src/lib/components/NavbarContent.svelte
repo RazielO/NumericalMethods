@@ -58,6 +58,7 @@
 			folder: '/integration',
 			links: [
 				{ href: 'trapezoidal', title: 'Trapezoidal rule' },
+				{ href: 'simpson13', title: 'Simpson 1/3' },
 			]
 		}
 	];
