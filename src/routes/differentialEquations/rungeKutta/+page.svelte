@@ -55,8 +55,6 @@
 		]);
 		result4th = steps4th[steps4th.length - 1].yi;
 	}
-
-	solve();
 </script>
 
 <svelte:head>
