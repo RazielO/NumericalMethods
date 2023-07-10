@@ -12,6 +12,7 @@
 	import FaMoon from 'svelte-icons/fa/FaMoon.svelte';
 	import FaRegSun from 'svelte-icons/fa/FaRegSun.svelte';
 	import FaSun from 'svelte-icons/fa/FaSun.svelte';
+	import GoMarkGithub from 'svelte-icons/go/GoMarkGithub.svelte';
 
 	import NavbarContent from '$lib/components/NavbarContent.svelte';
 
@@ -21,7 +22,7 @@
 
 	function toggleTheme() {
 		colorScheme.update((v) => {
-			dark = !dark;
+			dark = v === 'light' ? true : false;
 			return v === 'light' ? 'dark' : 'light';
 		});
 	}
@@ -61,8 +62,29 @@
 			</TypographyProvider>
 		</div>
 
-		<Footer slot="footer" height="5rem">
-			<p class="mx-auto block w-fit leading-[5rem]">GitHub.com/RazielO/NumericalMethods</p>
+		<Footer slot="footer" height="3rem">
+			<div class="footer flex w-fit gap-[1rem] justify-center items-center my-[auto]">
+				<div class="h-[2rem] my-[0.9rem]">
+					<GoMarkGithub />
+				</div>
+
+				<a class:dark={dark} href="https://github.com/RazielO/NumericalMethods"> RazielO/NumericalMethods </a>
+			</div>
 		</Footer>
 	</AppShell>
 </SvelteUIProvider>
+
+<style>
+	.footer {
+		margin: 0 auto;
+	}
+
+	.footer a {
+		color: rgb(34, 139, 230);
+		text-decoration: underline;
+	}
+	.footer a.dark {
+		
+		color: rgb(77, 171, 247);
+	}
+</style>
