@@ -1,38 +1,56 @@
-# create-svelte
+# Numerical Methods
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Collection of algorithms of numerical approximations to different types of mathematical problems. [Numerical analysis wikipedia](https://en.wikipedia.org/wiki/Numerical_analysis?oldformat=true).
 
-## Creating a project
+[WebSite](https://numericalmethods-razielo.netlify.app/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## List of methods
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+**1. Root Finding**
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- [Bisection](https://numericalmethods-razielo.netlify.app/rootFinding/bisection)
+- [Regula Falsi](https://numericalmethods-razielo.netlify.app/rootFinding/regulaFalsi)
+- [Fixed Point](https://numericalmethods-razielo.netlify.app/rootFinding/fixedPoint)
+- [Newton-Raphson](https://numericalmethods-razielo.netlify.app/rootFinding/newtonRaphson)
+- [Secant](https://numericalmethods-razielo.netlify.app/rootFinding/secant)
 
-## Developing
+**2. Equation Solving**
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- [Gauss](https://numericalmethods-razielo.netlify.app/equationSolving/gauss)
+- [Gauss-Jordan](https://numericalmethods-razielo.netlify.app/equationSolving/gaussJordan)
+- [Gauss-Seidel](https://numericalmethods-razielo.netlify.app/equationSolving/gaussSeidel)
+- [Jacobi](https://numericalmethods-razielo.netlify.app/equationSolving/jacobi)
 
-```bash
-npm run dev
+**3. Multi variable Equation Solving**
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- [Newton-Raphson](https://numericalmethods-razielo.netlify.app/equationSolving/newtonRaphson)
 
-## Building
+**4. Regression**
 
-To create a production version of your app:
+- [Least Squares](https://numericalmethods-razielo.netlify.app/regression/leastSquares)
+- [Polynomial](https://numericalmethods-razielo.netlify.app/regression/polynomial)
+- [Multiple Linear](https://numericalmethods-razielo.netlify.app/regression/multipleLinear)
 
-```bash
-npm run build
-```
+**5. Interpolation**
 
-You can preview the production build with `npm run preview`.
+- [Linear](https://numericalmethods-razielo.netlify.app/interpolation/linear)
+- [Polynomial](https://numericalmethods-razielo.netlify.app/interpolation/polynomial)
+- [Lagrange](https://numericalmethods-razielo.netlify.app/interpolation/lagrange)
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+**6. Differentiation**
+
+- [Numerical Differentiation](https://numericalmethods-razielo.netlify.app/differentiation/differentiation)
+
+**7. Integration**
+
+- [Trapezoidal rule](https://numericalmethods-razielo.netlify.app/integration/trapezoidal)
+- [Simpson 1/3](https://numericalmethods-razielo.netlify.app/integration/simpson13)
+- [Simpson 3/8](https://numericalmethods-razielo.netlify.app/integration/simpson38)
+
+**8. Differential Equations**
+
+- [Euler method](https://numericalmethods-razielo.netlify.app/differentialEquations/euler)
+- [Runge-Kutta method](https://numericalmethods-razielo.netlify.app/differentialEquations/rungeKutta)
+
+
+Written in Java [original repo](https://github.com/RazielO/MNumericos), and rewritten in TypeScript and Svelte for the front-end.
